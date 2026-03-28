@@ -246,12 +246,13 @@ def retrieve_and_rerank(query, paper_names):
     all_docs.sort(key=lambda d: d.metadata["rerank_score"], reverse=True)
     top_docs = all_docs[:TOP_K_RERANK]
 
-    # Normalise scores to 0-100% using sigmoid
-    def sigmoid(x):
-        return 1 / (1 + np.exp(-x))
-
+    # Normalise scores to 0-100% using min-max scaling
     scores = [d.metadata["rerank_score"] for d in top_docs]
-    norm = [round(sigmoid(s) * 100, 1) for s in scores]
+    s_min, s_max = min(scores), max(scores)
+    if s_max == s_min:
+        norm = [75.0] * len(scores)
+    else:
+        norm = [round((s - s_min) / (s_max - s_min) * 100, 1) for s in scores]
     for doc, pct in zip(top_docs, norm):
         doc.metadata["confidence"] = pct
 
