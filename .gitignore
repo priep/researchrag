@@ -1,0 +1,19 @@
+# Secrets — NEVER commit these
+.streamlit/secrets.toml
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.env
+venv/
+.venv/
+
+# Temp files the app creates
+temp.pdf
+*.faiss
+faiss_index/
+
+# OS
+.DS_Store
+Thumbs.db
