@@ -359,6 +359,15 @@ with st.sidebar:
         <span class="status-badge status-waiting">○ No papers loaded</span>
         """, unsafe_allow_html=True)
 
+        st.markdown("""
+        <div style="margin-top:14px;padding:12px;background:#111827;border-radius:8px;border:1px solid #2d3748">
+            <div style="font-size:12px;color:#6b7280;margin-bottom:8px;font-weight:600">MODES AVAILABLE</div>
+            <div style="font-size:12px;color:#9ca3af;margin-bottom:5px">📄 <b>Single</b> — Q&A on one paper</div>
+            <div style="font-size:12px;color:#9ca3af;margin-bottom:5px">📚 <b>Multi</b> — query across papers</div>
+            <div style="font-size:12px;color:#9ca3af">⚖️ <b>Compare</b> — side-by-side answers</div>
+        </div>
+        """, unsafe_allow_html=True)
+
     st.markdown("---")
 
     # Chat history
@@ -410,11 +419,34 @@ st.markdown(f"""
 
 # ── EMPTY STATES ──
 if not st.session_state.papers:
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        st.markdown("""
+        <div style="background:#111827;border:1px solid #2d3748;border-radius:10px;padding:20px;text-align:center">
+            <div style="font-size:28px;margin-bottom:8px">📄</div>
+            <div style="font-size:14px;font-weight:600;color:#93c5fd;margin-bottom:6px">Single paper Q&A</div>
+            <div style="font-size:12px;color:#6b7280">Ask anything about one paper. Every answer grounded in the document.</div>
+        </div>
+        """, unsafe_allow_html=True)
+    with col2:
+        st.markdown("""
+        <div style="background:#111827;border:1px solid #2d3748;border-radius:10px;padding:20px;text-align:center">
+            <div style="font-size:28px;margin-bottom:8px">📚</div>
+            <div style="font-size:14px;font-weight:600;color:#c4b5fd;margin-bottom:6px">Multi-paper merged</div>
+            <div style="font-size:12px;color:#6b7280">Query across multiple papers. Answers cite which paper each point comes from.</div>
+        </div>
+        """, unsafe_allow_html=True)
+    with col3:
+        st.markdown("""
+        <div style="background:#111827;border:1px solid #2d3748;border-radius:10px;padding:20px;text-align:center">
+            <div style="font-size:28px;margin-bottom:8px">⚖️</div>
+            <div style="font-size:14px;font-weight:600;color:#6ee7b7;margin-bottom:6px">Side-by-side compare</div>
+            <div style="font-size:12px;color:#6b7280">Same question to multiple papers, answers shown in columns.</div>
+        </div>
+        """, unsafe_allow_html=True)
     st.markdown("""
-    <div style="text-align:center;padding:60px 0;color:#6b7280">
-        <div style="font-size:48px">📂</div>
-        <p style="font-size:16px">Upload one or more PDFs in the sidebar to get started.</p>
-        <p style="font-size:13px">You can load up to 5 papers and query them together or compare them side-by-side.</p>
+    <div style="text-align:center;padding:28px 0 0;color:#6b7280">
+        <p style="font-size:15px">Upload PDFs in the sidebar to unlock all three modes — up to 5 papers at once.</p>
     </div>
     """, unsafe_allow_html=True)
     st.stop()
