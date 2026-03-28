@@ -98,8 +98,8 @@ if "processing" not in st.session_state:
 @st.cache_resource
 def get_llm():
     return ChatGroq(
-        groq_api_key=GROQ_API_KEY,
-        model_name=MODEL_NAME,
+        groq_api_key=get_api_key(),
+        model_name=MODEL_NAME
     )
 
 @st.cache_resource
