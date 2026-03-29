@@ -145,4 +145,4 @@ The benchmark tab auto-generates 10 test questions using Groq, runs Hit@K, and e
 
 ---
 
-Built by [Priya Patidar](https://linkedin.com/in/priya--patidar) · B.Tech CSE, Rajasthan Technical University · CGPA 9.58
+Built by Priya Patidar
